@@ -12,7 +12,7 @@ router.get("/image/:id", async function (req, res) {
     );
     const listImages = Array.from(
       { length: imagesData.hinh_anh },
-      (_, i) => `https://my-app-chi-smoky.vercel.app/images/${i + 1}.jpg`
+      (_, i) => `https://my-app-chi-smoky.vercel.app/images/${id}/${i + 1}.jpg`
     );
 
     return res.render("index", {
