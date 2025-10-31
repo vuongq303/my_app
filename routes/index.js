@@ -4,11 +4,11 @@ var router = express.Router();
 
 function convertCode(input) {
   let [prefix, suffix] = input.split(".");
-  if (!suffix) return input.toLowerCase();
+  if (!suffix) return input;
   let first = suffix[0];
   let lastTwo = suffix.slice(-2);
   let middle = suffix.length > 3 ? "x" : "";
-  return prefix.toLowerCase() + "." + first + middle + lastTwo;
+  return prefix + "." + first + middle + lastTwo;
 }
 
 router.get("/image/:id", async function (req, res) {
