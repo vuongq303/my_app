@@ -9,7 +9,9 @@ var indexRouter = require("./routes/index");
 var app = express();
 
 mongoose
-  .connect("mongodb+srv://quancanhai:hoangquan123@cluster0.m5rmad6.mongodb.net/hoangquan")
+  .connect(
+    "mongodb+srv://quancanhai:hoangquan123@cluster0.m5rmad6.mongodb.net/hoangquan"
+  )
   .then(() => console.log("Connected MongoDB"))
   .catch((err) => console.error("Error Connect: ", err));
 
@@ -25,6 +27,12 @@ app.use("/", indexRouter);
 
 app.use(function (_, __, next) {
   next(createError(404));
+  res.render("error", {
+    error: {
+      message: "404 Not Found",
+      status: 404,
+    },
+  });
 });
 
 app.use(function (err, req, res, _) {
