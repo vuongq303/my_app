@@ -25,8 +25,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 
-app.use(function (_, __, next) {
-  next(createError(404));
+app.use(function (_, res, next) {
   res.render("error", {
     error: {
       message: "404 Not Found",
