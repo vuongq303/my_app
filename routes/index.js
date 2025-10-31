@@ -10,9 +10,9 @@ router.get("/image/:id", async function (req, res) {
       /^(\w\.\d)\d(\d{2})$/,
       "$1x$2"
     );
-    const image = imagesData.hinh_anh.split(",");
-    const listImages = image.map(
-      (img) => `https://my-app-chi-smoky.vercel.app/images/${id}/${img}`
+    const listImages = Array.from(
+      { length: imagesData.hinh_anh },
+      (_, i) => `https://my-app-chi-smoky.vercel.app/images/${i + 1}.jpg`
     );
 
     return res.render("index", {
